@@ -1,0 +1,82 @@
+
+
+
+    <p>----------------------------------------------------------------------</p>
+
+
+    <div class="container">
+        <h1>
+          Form Validation 
+        </h1>
+        <form [formGroup]="angForm">
+              <div class="form-group">
+                  <label>Name:</label>
+                  <input class="form-control" formControlName="name" type="text">
+              </div>
+              <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+                  <div *ngIf="angForm.controls['name'].errors.required">
+                    Name is required.
+                     <div *ngIf="f.name.errors.minlength">Name should be 4 character.</div>
+                  </div>
+
+                  <div *ngIf="angForm.controls['name'].hasError('maxlength')" class="alert alert-danger">
+                    Last Name cannot exceed 8 characters.
+                  </div>
+              </div>
+               <div class="form-group">
+                  <label>Address:</label>
+                  <input class="form-control" formControlName="address" type="text">
+              </div>
+              <div *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)" class="alert alert-danger">
+                  <div *ngIf="angForm.controls['address'].errors.required">
+                    <h2>address is required.</h2>
+                  </div>
+              </div>
+              
+        </form>
+        <br />
+        <p>Form value: {{ angForm.value | json }}</p>
+        <p>Form status: {{ angForm.status | json }}</p>
+      </div>
+
+
+
+
+<div>
+
+
+    <input type="radio" name ="a" id="Employee" (click)="dispEmp($event)">Employee 
+
+    <input type="radio" name ="a" id="Admin" (click)="dispAdmin($event)"> Admin
+
+    <input type="radio" name ="a" id="Customer"(click)="dispCust($event)">Customer <br/><br/><br/>
+
+
+
+    <div [hidden]="displayForm">
+    <form>
+       <p> Username :  <input type="text"></p>
+        <p>Password :  <input type="password"></p>
+        <p [hidden]="PassKey">    PassKey  :  <input type="text"></p>
+        <p [hidden]="Otp">Otp : <input type="text" ></p><br><br>
+        <button type="submit">Submit </button></form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+</div>
